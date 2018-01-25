@@ -4,7 +4,9 @@ A collection of python scripts (v3.5) used for P.patens sORF discovery work. The
 	!!! NOTE !!!It requires some variables have to be manually changed. See info in the script files for details. 
 		One of the files is fasta file with sORFs corresponding to protein sequences reuired by the script (name of the protein and nucleotide sequences MUST be identical). 
 	Usage (see --help) e.g. 
-  ````nohup python3 protein_Ka_Ks_codeml.py translated_FINAL_sORF_SELECTED.fa Zmays_284_Ensembl-18_2010-01-MaizeSequence.transcript.fa --blast T --threads 10 --makedb T````  
+```
+nohup python3 protein_Ka_Ks_codeml.py translated_FINAL_sORF_SELECTED.fa Zmays_284_Ensembl-18_2010-01-MaizeSequence.transcript.fa --blast T --threads 10 --makedb T
+```
 	Scripts required for protein_Ka_Ks_codeml.py:
 		2.1 codemlParser folder contains module to run and parser Codeml program
 		2.2 oopBLASTv_forsORF.py - script to run blast and parse the results
