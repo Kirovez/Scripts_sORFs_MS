@@ -171,5 +171,9 @@ GP.writeIntrons("Ppatens_318_v3.3_introns.bed")
 
 #GP.writeFeature("CDS", "Ppatens_318_v3.3_CDS.bed")
 
+if __name__ == "main":
+    GP = GffParser("Ppatens_318_v3.3.gene_exons.gff3")
+    GP.writeIntrons("Ppatens_318_v3.3_introns.bed")
+    GP.writeFeature("CDS", "Ppatens_318_v3.3_CDS.bed")
 
 
