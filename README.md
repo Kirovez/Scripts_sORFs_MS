@@ -1,4 +1,4 @@
-# A collection of python scripts (v3.5) used for P.patens sORF discovery work. 
+# A collection of python scripts (v3.5) used for P.patens [sORF discovery work](https://www.biorxiv.org/content/early/2017/11/03/213736). 
 The corresponding MS is currently under revision and is available here: https://www.biorxiv.org/content/early/2017/11/03/213736
 1. __GffParser.py__ - script to find introns in P.patens gff3 file.
 2. __protein_Ka_Ks_codeml.py__ - script to calculate dn/ds value. Basically, it takes two fasta files: proteins corresponding to sORF, transcript nucleotide sequences from other species. Usage: see  --help. Example:  `python3 protein_Ka_Ks_codeml.py translated_FINAL_sORF_SELECTED.fa Zmays_284_Ensembl-18_2010-01-MaizeSequence.transcript.fa  --blast T --threads 10 --makedb T`
