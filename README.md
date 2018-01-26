@@ -2,19 +2,20 @@
 The corresponding MS is currently under revision and is available here: https://www.biorxiv.org/content/early/2017/11/03/213736
 #### GffParser.py 
 __Description__: script to find introns in P.patens gff3 file.
+
 #### protein_Ka_Ks_codeml.pys
 __Description__: script to calculate dn/ds value. Basically, it takes two fasta files: proteins corresponding to sORF, transcript nucleotide sequences from other species. Usage: see  --help. Example:  `python3 protein_Ka_Ks_codeml.py translated_FINAL_sORF_SELECTED.fa Zmays_284_Ensembl-18_2010-01-MaizeSequence.transcript.fa  --blast T --threads 10 --makedb T`
 
    Dependencies:
 
-    * perl, python, biopython
-    * pal2nal perl script, available here https://github.com/HajkD/orthologr/tree/master/inst/pal2nal/pal2nal.v14.
+  * perl, python, biopython
+  * pal2nal perl script, available here https://github.com/HajkD/orthologr/tree/master/inst/pal2nal/pal2nal.v14.
     !!! set `pal2nal` variable to run pal2nal script e.g. `pal2nal=r"perl ./pal2nal.v14/pal2nal.pl"` (default)
 
-    * blast. Please, if it is required, change `blast` variable in class e.g.  `blast=r"tblastn"` (default)
-    * codeml. .ctl file can be found in this directory
-    * clustalo
-    * codeml Parser module (it is located at [codemlParser directory](https://github.com/Kirovez/Scripts_sORFs_MS/tree/master/codemlParser))
+  * blast. Please, if it is required, change `blast` variable in class e.g.  `blast=r"tblastn"` (default)
+  * codeml. .ctl file can be found in this directory
+  * clustalo
+  * codeml Parser module (it is located at [codemlParser directory](https://github.com/Kirovez/Scripts_sORFs_MS/tree/master/codemlParser))
 
    Change variable `query_seq_ind` to the path to the file with sORF nucleotide sequences
 e.g. (default) `query_seq_ind = SeqIO.index("/home/ilia/sORF/sORFfinder2/moss/FINAL_sORF_SELECTED.fa", "fasta")`
