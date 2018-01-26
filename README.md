@@ -21,7 +21,7 @@ __Dependencies__:
    Change variable `query_seq_ind` to the path to the file with sORF nucleotide sequences
    e.g. (default) `query_seq_ind = SeqIO.index("/home/ilia/sORF/sORFfinder2/moss/FINAL_sORF_SELECTED.fa", "fasta")`
 
-  * oopBLASTv_forsORF.py__ script. Available in this repository
+  * oopBLASTv_forsORF.py script. Available in this repository
 
    !!! NOTE !!!It requires some variables have to be manually changed. See info in the script files for details.  One of the variables corresponds to the fasta file containing nucleotide sequences of sORFs 
    (Important! ids of the protein and nucleotide sORF sequences MUST be identical). 	
@@ -37,49 +37,49 @@ class takes query and reference fasta files
 run BLAST
 `Bl.runblast()`
 
-the function takes xml file. Default name for this file: <query file name>_vs_<hit file name>. 
+the function takes xml file. Default name for this file is "<query file name>_vs_<hit file name>". 
 `Bl.parseBlastXml()` 
 It can also be used to parse external xml file. E.g. 
 
 `parseBlastXml(file_exo="extranal_xml_blast.xml")`
  
 It returns .bed file with following columns:
-	1. Query id
-	2. Hit id
-	3. Blank column (0 value)
-	4. Start HSP in hit (start position of hit sequence involved in alignment)
-	5. Stop HSP in hit (stop position of hit sequence involved in alignment)
-	6. E-value,  
-	7. hit HSP sequence, 
-	8. query HSP sequence
-	9. length of hit HSP
-	10. hit strand
-	11. Start HSP in query (start position of query sequence involved in alignment)
-	 12. Stop HSP in query (stop position of query  sequence involved in alignment)
+1. Query id
+2. Hit id
+3. Blank column (0 value)
+4. Start HSP in hit (start position of hit sequence involved in alignment)
+5. Stop HSP in hit (stop position of hit sequence involved in alignment)
+6. E-value,  
+7. hit HSP sequence, 
+8. query HSP sequence
+9. length of hit HSP
+10. hit strand
+11. Start HSP in query (start position of query sequence involved in alignment)
+12. Stop HSP in query (stop position of query  sequence involved in alignment)
 
 ### KaKsloop.py
 __Descroption__: example script which can be used to run protein_Ka_Ks_codeml.py for set of reference sequences
 ### sORF_completeness_v2.0.py 
 __Description__: script to estimate changes in homologous sORF length between different species. It takes genome fasta file, fasta file protein translated sORFs and bed table created by `oopBLASTv_forsORF.py` script. 
 return table with 18 column (actually the first 13 columns are identical to the input bed file):
-	1. Query id
-	2. Hit id
-	3. Blank column (0 value)
-	4. Start HSP in hit (start position of hit sequence involved in alignment)
-	5. Stop HSP in hit (stop position of hit sequence involved in alignment)
-	6. E-value,  
-	7. hit HSP sequence, 
-	8. query HSP sequence
-	9. length of hit HSP
-	10. hit strand
-	11. Blank column
-	12. Start HSP in query (start position of query sequence involved in alignment)
-	13. Stop HSP in query (stop position of query  sequence involved in alignment)
-	 14. Predicted start Codon coordinates of homologous sORF
-	 15. Predicted stop Codon coordinates of homologous sORF 
-	 16. Premature Stop Codon (- no PSC found)
-	 17. Predicted length  of homologous sORF (if 0 – premature stop codon found before (upstream) HSP start), aa
-	 18. sORF query length, aa
+1. Query id
+2. Hit id
+3. Blank column (0 value)
+4. Start HSP in hit (start position of hit sequence involved in alignment)
+5. Stop HSP in hit (stop position of hit sequence involved in alignment)
+6. E-value,  
+7. hit HSP sequence, 
+8. query HSP sequence
+9. length of hit HSP
+10. hit strand
+11. Blank column
+12. Start HSP in query (start position of query sequence involved in alignment)
+13. Stop HSP in query (stop position of query  sequence involved in alignment)
+ 14. Predicted start Codon coordinates of homologous sORF
+ 15. Predicted stop Codon coordinates of homologous sORF 
+ 16. Premature Stop Codon (- no PSC found)
+ 17. Predicted length  of homologous sORF (if 0 – premature stop codon found before (upstream) HSP start), aa
+ 18. sORF query length, aa
 ### sORFfastaToBed2.py 
 __Description__: Script to parse sORFfinder output file to generate bed file
 __Usage__:
