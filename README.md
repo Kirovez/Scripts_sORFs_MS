@@ -1,22 +1,21 @@
-A collection of python scripts (v3.5) used for P.patens sORF discovery work. The corresponding MS is currently under revision and is available here: https://www.biorxiv.org/content/early/2017/11/03/213736
-1. GffParser.py - script to find introns in P.patens gff3 file.
-2. protein_Ka_Ks_codeml.py - script to calculate dn/ds value. Basically, it takes two fasta files: proteins corresponding to sORF, transcript nucleotide sequences from other species. Usage: see  --help. Example:  `python3 protein_Ka_Ks_codeml.py translated_FINAL_sORF_SELECTED.fa Zmays_284_Ensembl-18_2010-01-MaizeSequence.transcript.fa  --blast T --threads 10 --makedb T`
-Dependencies:
+# A collection of python scripts (v3.5) used for P.patens sORF discovery work. The corresponding MS is currently under revision and is available here: https://www.biorxiv.org/content/early/2017/11/03/213736
+### 1. GffParser.py - script to find introns in P.patens gff3 file.
+### 2. protein_Ka_Ks_codeml.py - script to calculate dn/ds value. Basically, it takes two fasta files: proteins corresponding to sORF, transcript nucleotide sequences from other species. Usage: see  --help. Example:  `python3 protein_Ka_Ks_codeml.py translated_FINAL_sORF_SELECTED.fa Zmays_284_Ensembl-18_2010-01-MaizeSequence.transcript.fa  --blast T --threads 10 --makedb T`
+1. Dependencies:
 
-*. perl, python, biopython
-*. pal2nal perl script, available here https://github.com/HajkD/orthologr/tree/master/inst/pal2nal/pal2nal.v14.
- !!!set 'pal2nal' variable to run pal2nal script e.g. pal2nal=r"perl ./pal2nal.v14/pal2nal.pl" (default)
+  * perl, python, biopython
+  * pal2nal perl script, available here https://github.com/HajkD/orthologr/tree/master/inst/pal2nal/pal2nal.v14.
+    __!!!__set'pal2nal' variable to run pal2nal script e.g. pal2nal=r"perl ./pal2nal.v14/pal2nal.pl" (default)
 
-*.  blast. Please, if it is required, change 'blast' variable in class e.g.  blast=r"tblastn" (default)
-*. codeml. .ctl file can be found here
-*. clustalo.
-*. codeml Parser module (see at codemlParser directory)
+  * blast. Please, if it is required, change `blast` variable in class e.g.  `blast=r"tblastn"` (default)
+  * codeml. .ctl file can be found in this directory
+  * clustalo.
+  * codeml Parser module (see at [codemlParser directory[(https://github.com/Kirovez/Scripts_sORFs_MS/tree/master/codemlParser))
 
-!! change variable query_seq_ind to the path to the file with sORF nucleotide sequences
-e.g. (default)
-query_seq_ind = SeqIO.index("/home/ilia/sORF/sORFfinder2/moss/FINAL_sORF_SELECTED.fa", "fasta")
+2. change variable `query_seq_ind` to the path to the file with sORF nucleotide sequences
+e.g. (default) `query_seq_ind = SeqIO.index("/home/ilia/sORF/sORFfinder2/moss/FINAL_sORF_SELECTED.fa", "fasta")`
 
-7. oopBLASTv_forsORF.py script. Available in this repository
+### 3. oopBLASTv_forsORF.py script. Available in this repository
 
 !!! NOTE !!!It requires some variables have to be manually changed. See info in the script files for details.  One of the variable corresponds to the fasta file containing nucleotide sequences of sORFs (Important! id of the protein and nucleotide sORF () sequences MUST be identical). 	
 
@@ -24,7 +23,7 @@ Scripts required for protein_Ka_Ks_codeml.py:
 		2.1 codemlParser folder contains module to run and parser Codeml program
 		2.2 oopBLASTv_forsORF.py - script to run blast and parse the results.
 Usage example:
-# class takes query and reference fasta files
+class takes query and reference fasta files
 Bl = BlastParser(r"/home/ilia/sORF/sORFfinder2/moss/FINAL_sORF_SELECTED.fa", r"/home/ilia/SOLID_moss/Ppatens_318_v3_index.fa", DB_build=False)
 
 # run BLAST
