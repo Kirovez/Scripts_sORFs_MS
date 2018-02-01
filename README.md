@@ -60,7 +60,9 @@ It returns .bed file with following columns:
 ### KaKsloop.py
 __Descroption__: example script which can be used to run protein_Ka_Ks_codeml.py for set of reference sequences
 ### sORF_completeness_v2.0.py 
-__Description__: script to estimate changes in homologous sORF length between different species. It takes genome fasta file, fasta file protein translated sORFs and bed table created by `oopBLASTv_forsORF.py` script. 
+__Description__: script to estimate changes in homologous sORF length between different species. It takes 1) genome/transcriptome fasta file, 2) fasta file with protein sequence
+translated from sORFs and 3) bed table created by `oopBLASTv_forsORF.py` script. 
+The script
 return table with 18 column (actually the first 13 columns are identical to the input bed file):
 1. Query id
 2. Hit id
