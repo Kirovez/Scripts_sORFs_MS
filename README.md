@@ -66,9 +66,8 @@ The script
 return table with 18 column (actually the first 13 columns are identical to the input bed file):
 1. Query id
 2. Hit id
-3. Blank column (0 value)
-4. Start HSP in hit (start position of hit sequence involved in alignment)
-5. Stop HSP in hit (stop position of hit sequence involved in alignment)
+3. Start HSP in hit (start position of hit sequence involved in alignment)
+4. Stop HSP in hit (stop position of hit sequence involved in alignment)
 6. E-value,  
 7. hit HSP sequence, 
 8. query HSP sequence

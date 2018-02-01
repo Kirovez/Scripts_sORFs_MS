@@ -73,9 +73,9 @@ class sORFCompletenessChecker():
             QueryId = sp[0]
             HitID = sp[1]
 
-            StartHit, EndHit = int(sp[2]), int(sp[3])
+            StartHit, EndHit = int(sp[3]), int(sp[4])
 
-            HitStrand = sp[-3]
+            HitStrand = sp[-4]
 
             from_checking = self.checkCompletenesQuery(StartHit, EndHit, HitID, HitStrand)
 
@@ -93,6 +93,9 @@ class sORFCompletenessChecker():
         StopCodonCoord = "-"
 
         length = 0
+
+        len_hitORF = 0
+        StopInframe = "-"
 
         prematureStopCodon = "-"
         prematureStart = "-"
@@ -215,4 +218,4 @@ for i in species_fasta:
 """
 
 sORFCompletenessChecker("translated_FINAL_sORF_SELECTED.fa", "/home/ilia/RNA_seq_reads_moss/TopHat/Ppatens_318_v3.fa",
-                            "blast_translated_sORFs_vs_Ppatens_genome.xml.bed")
+                            "{0}_vs_{1}.bed".format("translated_FINAL_sORF_SELECTED.fa","Ppatens_318_v3.fa"))
