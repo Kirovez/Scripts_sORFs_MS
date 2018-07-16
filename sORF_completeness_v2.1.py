@@ -79,9 +79,9 @@ class sORFCompletenessChecker():
 
             from_checking = self.checkCompletenesQuery(StartHit, EndHit, HitID, HitStrand)
 
-            self.outputFinalTab.write(line_from_bed.rstrip() + "\t" + from_checking + "\t" + str(len(self.QueryIndex[QueryId])) + "\n")
+            self.outputFinalTab.write(line_from_bed.rstrip() + "\t" + from_checking + "\t" + str(len(self.QueryIndex[QueryId])-1) + "\n")
 
-            self.writeInBed(line_from_bed.rstrip() + "\t" + from_checking + "\t" + str(len(self.QueryIndex[QueryId])) + "\n")
+            #self.writeInBed(line_from_bed.rstrip() + "\t" + from_checking + "\t" + str(len(self.QueryIndex[QueryId])-1) + "\n")
 
 
 
@@ -121,9 +121,6 @@ class sORFCompletenessChecker():
             prematureStart = str(seq_tr.index(plusStart))
 
 
-
-
-
         init = coord1
         for stcodon in range((len(seq[0:coord1])//3) + 1):
             codon = seq[init:init+3]
@@ -161,36 +158,35 @@ class sORFCompletenessChecker():
 
             initStop += 3
 
+        if prematureStopCodon == "-":
+            # check any stop codons in blast hit sequence part
+            if "-" in strand:
+                seq_tr = str(Seq(seq[coord1:coord2]).reverse_complement().translate())[:-1:-1]
+            else:
+                seq_tr = str(Seq(seq[coord1:coord2]).translate())[:-1]
 
-        # check any stop codons in blast hit sequence part
-        if "-" in strand:
-            seq_tr = str(Seq(seq[coord1:coord2]).reverse_complement().translate())
+            if "*" in seq_tr[:-1]:
+                StopCodonCoord = str((seq_tr.index("*")*3) + coord1)
 
-        else:
-            seq_tr = str(Seq(seq[coord1:coord2]).translate())
 
-        if "*" in seq_tr[:-1]:
-            prematureStopCodon = str(seq_tr[:-1].index("*")*3)
+         ### calculate lengths ####
+        length = 0
+        # if stop codon before start length = 0
+        if prematureStopCodon != "-":
+            length = 0
 
-        # get length of peptide from obtained sORF coordinates
-        if StartCodonCoord != "-":
-            if prematureStopCodon != "-":
-                length = abs(int(prematureStopCodon) - int(StartCodonCoord))
-            elif StopCodonCoord != "-":
+        elif StartCodonCoord != "-":
+            if StopCodonCoord != "-":
                 length = abs(int(StopCodonCoord) - int(StartCodonCoord))
 
-        # a case when start codon was found insight alignment and premature stop codon
-        elif prematureStart != "-" and prematureStopCodon != "-":
-            if "-" in strand and int(prematureStart) > int(prematureStopCodon):
-                length = abs(int(prematureStopCodon) - int(prematureStart))
-                StartCodonCoord = prematureStart
-            elif "-" not in strand and int(prematureStart) < int(prematureStopCodon):
-                length = abs(int(prematureStopCodon) - int(prematureStart))
-                StartCodonCoord = prematureStart
+        # no start but premature start exists
+        elif prematureStart != "-":
+            if StopCodonCoord != "-":
+                length = abs(int(StopCodonCoord) - int(prematureStart))
 
 
 
-        toRet = [StartCodonCoord, StopCodonCoord, prematureStopCodon, str(int(length/3))]
+        toRet = [StartCodonCoord, StopCodonCoord, prematureStopCodon, str(int(length/3)-1)]
 
         return "\t".join(toRet)
 

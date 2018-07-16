@@ -46,16 +46,15 @@ It can also be used to parse external xml file. E.g.
 It returns .bed file with following columns:
 1. Query id
 2. Hit id
-3. Blank column (0 value)
-4. Start HSP in hit (start position of hit sequence involved in alignment)
-5. Stop HSP in hit (stop position of hit sequence involved in alignment)
-6. E-value,  
-7. hit HSP sequence, 
-8. query HSP sequence
-9. length of hit HSP
-10. hit strand
-11. Start HSP in query (start position of query sequence involved in alignment)
-12. Stop HSP in query (stop position of query  sequence involved in alignment)
+3. Start HSP in hit (start position of hit sequence involved in alignment)
+4. Stop HSP in hit (stop position of hit sequence involved in alignment)
+5. E-value,  
+6. hit HSP sequence, 
+7. query HSP sequence
+8. length of hit HSP
+9. hit strand
+10. Start HSP in query (start position of query sequence involved in alignment)
+11. Stop HSP in query (stop position of query  sequence involved in alignment)
 
 ### KaKsloop.py
 __Descroption__: example script which can be used to run protein_Ka_Ks_codeml.py for set of reference sequences
